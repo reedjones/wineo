@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+
+{% block title %}Add a Wine{% endblock %}
+
+{% block head %}
+    <style>
+.ui.form .success.message, .ui.form .warning.message, .ui.form .error.message {
+     display: block !important;
+}
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui teal icon header">
+                <i class="large red heart icon"></i>
+
+                <div class="content">Add A Wine</div>
+            </h2>
+            {% if form.errors %}
+                <div class="ui error message" id="error">
+                    {{ form.errors }}
+                </div>
+
+                <script>
+                    $('#error').focus()
+                </script>
+            {% endif %}
+            <!--name, nickname, email, sex,  password, password -->
+            <form action="/wine/add/" method="post" class="ui large form" id="wine-form"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="ui stacked segment">
+
+                    <div class="three fields">
+                        <div class="field">
+                            <label for="name">Name</label>
+
+                            <div class="ui left icon input">
+                                <i class="info icon"></i>
+                                <input name="name" placeholder="The Wine's Name" type="text" id="name"/>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="wine_type">Wine Type</label>
+
+                            <div class="ui left icon input">
+                                <i class="info icon"></i>
+
+                                <input name="wine_type"
+                                       placeholder="Example: Porto" type="text" id="wine_type"/>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="user_made_by">Made By</label>
+
+                            <div class="ui left icon input">
+
+                                <i class="info icon"></i>
+
+                                <input name="user_made_by"
+                                       placeholder="The Name Of The Winery (found on bottle)"
+                                       type="text" id="user_made_by"/>
+                            </div>
+                        </div>
+                    </div>
+                   <div class="two fields">
+                       <div class="field">
+                           <label for="region">Region</label>
+                           <input type="text" name="region" name="region"/>
+                       </div>
+                        {% include 'country.html' %}
+                   </div>
+                    <div class="field">
+                        <label for="year">Year</label>
+
+                        <div class="ui left icon input">
+                            <i class="calender icon"></i>
+
+                            <input type="text" name="year" id="year" placeholder="ex: 1997"/>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="text icon"></i>
+                            <textarea name="winery_description"
+                                      rows="4"
+                                      placeholder="The winery's description of the wine, found on the bottle..."
+                                    ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="user_description">User Notes</label>
+
+                        <div class="ui left icon input">
+                            <i class="text icon"></i>
+
+                            <textarea name="user_description"
+                                      id="user_description"
+                                      rows="4"
+                                      placeholder="User Note:, not about taste or review! (that comes later) but just any notes you have
+                                      "
+                                    ></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="three fields">
+                        <div class="field"><label for="volume">Alcohol Percent</label>
+
+                            <div class="ui left icon input">
+                                <i class="percent icon"></i>
+
+                                <input type="text" name="volume" id="volume" placeholder="14.5"/>
+                            </div>
+                        </div>
+                        <div class="field"><label for="barcode">Barcode Value (Found on bottle) <br>
+                            Not Required</label>
+
+                            <div class="ui left icon input">
+                                <i class="barcode icon"></i>
+
+                                <input type="text" name="barcode" id="volume" placeholder="8899009988"/>
+                            </div>
+                        </div>
+
+                        <div class="field"><label for="estimated_price">The Estimated Price of Bottle ()In Kc</label>
+
+                            <div class="ui left icon input">
+                                <i class="money icon"></i>
+
+                                <input type="text" name="estimated_price" id="estimated_price"
+                                       placeholder="300"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="two fields">
+                        <div class="field">
+                            <label>Label</label>
+                            <input type="file" id="label" name="label" style="display: none;"
+                                   onchange="previewFile()"/>
+                            <button class="ui pink button" id="upload">Upload Picture</button>
+                        </div>
+                        <div class="field">
+                            <img style="" src=""
+                                 class="ui medium circular image" id="sample"/>
+                            <input type="hidden"/>
+                        </div>
+                    </div>
+
+                    <button class="ui fluid large teal submit button" id="register">Post It!</button>
+                </div>
+
+
+            </form>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+    <script>
+        var reader, data;
+        $('.ui.dropdown')
+                .dropdown()
+        ;
+
+        $(document).ready(function () {
+            $('#upload').click(function (e) {
+                e.preventDefault();
+                $("#label").click();
+                return false;
+            });
+
+        });
+
+        function previewFile() {
+            var preview = document.getElementById("sample");
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                preview.src = reader.result;
+            }, false);
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+{% endblock %}

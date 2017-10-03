@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Add A Photo {% endblock %}
+{% block head %}
+    <style>
+
+        body {
+            background-color: #DADADA
+        }
+
+        .ui.form .error.message {
+            display: block;
+        }
+
+        #form-segment {
+            min-height: 200px;
+        }
+
+        #register {
+            margin-top: 10%;
+        }
+    </style>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="ui middle aligned center aligned very relaxed stackable grid">
+        <div class="column">
+            <h2 class="ui teal image header">
+                <img class="image" src="/static/img/logo.png"/>
+
+                <div class="content">Add A Profile Picture</div>
+            </h2>
+            <!--name, nickname, email, sex,  password, password -->
+            <form action="/accounts/photo/" method="post" class="ui large form" id="register-form"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+
+
+                <div class="field">
+                    <div class="ui left action input">
+                        <button class="ui teal labeled icon button" id="upload">
+                            <i class="upload icon"></i>
+                            Upload from Device
+                        </button>
+                        <input type="file" id="image" name="image" style="display: none;"/>
+                    </div>
+                </div>
+
+
+                <button class="ui green submit button" id="register">Finished</button>
+
+
+                <div class="ui error message">
+                    {{ form.errors }}
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#upload').click(function (e) {
+                e.preventDefault();
+                $("input[id='image']").click();
+                return false;
+            });
+
+        })
+    </script>
+
+
+{% endblock %}

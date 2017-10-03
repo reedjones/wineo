@@ -1,0 +1,105 @@
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+        <a class="header item" href="/">
+            <img src="/static/img/logo.png" class="logo nav_logo"/>
+
+            <span class="nav_text">Wine0</span>
+        </a>
+        <a class="help-out item">
+            Help
+            <i class="dropdown icon"></i>
+        </a>
+    <div class="ui fluid popup bottom transition hidden" style="top:482px; left: auto; bottom: auto; right: 1px">
+        <div class="ui relaxed equal height divided grid">
+            <div class="column">
+                <div class="ui header"><h4>Title</h4></div>
+                <div class="ui link list">
+                    <a class="item">item</a>
+                    <a class="item">item</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="item">
+            <div class="ui icon input">
+                <input type="search" placeholder="Search...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+
+        <a class="browse item">Browse
+            <i class="dropdown icon"></i>
+        </a>
+
+        <div class="ui fluid popup bottom left transition hidden"
+             style="top:482px; left: 1px; bottom: auto; right: auto;">
+            <div class="ui four column relaxed equal height divided grid">
+                <div class="column">
+                    <h4 class="ui header">Title</h4>
+
+                    <div class="ui link list">
+                        <a class="item" href="">item</a>
+
+                    </div>
+                </div>
+                <div class="column">
+                     <h4 class="ui header">Title</h4>
+
+                    <div class="ui link list">
+                        <a class="item" href="">item</a>
+
+                    </div>
+                </div>
+                <div class="column">
+                     <h4 class="ui header">Title</h4>
+
+                    <div class="ui link list">
+                        <a class="item" href="">item</a>
+
+                    </div>
+                </div>
+                <div class="column">
+                   <h4 class="ui header">Title</h4>
+
+                    <div class="ui link list">
+                        <a class="item" href="">item</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if request.user.is_authenticated %}
+            <div class="menu right">
+                <img class="ui circular image" id="navatar" style="padding-right:0.2em;"
+                     src="/static/img/avatar/small/elliot.jpg"/>
+
+                <div class="ui simple dropdown item">
+
+                    <i class="dropdown icon"></i>
+
+                    <div class="menu">
+                        <a href="/profiles/my_profile/" class="item">Dashboard</a>
+                        <a href="#" class="item">Settings</a>
+
+                        <div class="divider"></div>
+                        <a href="#" class="item">Help</a>
+
+                        <div class="divider"></div>
+                        <div class="header"><a href="/accounts/logout/">Logout</a></div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="menu right">
+                <a class="item" href="/accounts/register/">
+                    <div class="ui button">Sign up</div>
+                </a>
+                <a class="item" href="/accounts/login/">
+                    <div class="ui button">Login</div>
+                </a>
+            </div>
+        {% endif %}
+
+    </div>
+</div>

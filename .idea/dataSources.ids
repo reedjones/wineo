@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Django default" product="SQLite" version="3.8.9" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="1a338637-cdab-4396-9e6d-db149896f9d4">
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:C:\Users\reed\PycharmProjects\WineO\db.sqlite3</jdbc-url>
+    <libraries>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm30/config/jdbc-drivers/xerial-sqlite-license.txt</url>
+      </library>
+      <library>
+        <url>file://$USER_HOME$/.PyCharm30/config/jdbc-drivers/sqlite-jdbc-3.8.9.jar</url>
+      </library>
+    </libraries>
+    <schema name="" catalog=""/>
+    <table name="auth_group" schema="" catalog="" type="TABLE"/>
+    <table name="auth_group_permissions" schema="" catalog="" type="TABLE"/>
+    <table name="auth_permission" schema="" catalog="" type="TABLE"/>
+    <table name="authtools_user" schema="" catalog="" type="TABLE"/>
+    <table name="authtools_user_groups" schema="" catalog="" type="TABLE"/>
+    <table name="authtools_user_user_permissions" schema="" catalog="" type="TABLE"/>
+    <table name="django_admin_log" schema="" catalog="" type="TABLE"/>
+    <table name="django_content_type" schema="" catalog="" type="TABLE"/>
+    <table name="django_migrations" schema="" catalog="" type="TABLE"/>
+    <table name="django_session" schema="" catalog="" type="TABLE"/>
+    <table name="profiles_profile" schema="" catalog="" type="TABLE"/>
+    <table name="sqlite_sequence" schema="" catalog="" type="TABLE"/>
+    <table name="wines_note" schema="" catalog="" type="TABLE"/>
+    <table name="wines_wine" schema="" catalog="" type="TABLE"/>
+    <table name="wines_winery" schema="" catalog="" type="TABLE"/>
+  </data-source>
+</component>

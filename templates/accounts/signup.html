@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}Sign up {% endblock %}
+{% block head %}
+    <style>
+
+        body {
+            background-color: #DADADA
+        }
+
+        .ui.form .error.message {
+            display: block;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('.ui.form').form({
+                fields: {
+                    nick: {
+                        identifier: 'nick',
+                        rules: [
+                            {
+                                type: 'empty', prompt: 'Please enter a username, this will identify you to others'
+                            }
+                        ]
+                    },
+                    email: {
+                        identifier: 'email',
+                        rules: [
+                            {
+                                type: 'empty', prompt: 'You didnt enter your email'
+                            },
+                            {
+                                type: 'email', prompt: 'please enter a valid email'
+                            }
+                        ]
+                    },
+                    password1: {
+                        identifier: 'password1',
+                        rules: [
+                            {
+                                type: 'empty', prompt: 'Please enter a password'
+                            },
+                            {
+                                type: 'minLength[6]', prompt: 'Password must be at least 6 charaters'
+                            }
+                        ]
+                    },
+                    password2: {
+                        identifier: 'password2',
+                        rules: [
+                            {
+                                type: 'empty', prompt: 'Please repeat your password'
+
+                            },
+                            {
+                                type: 'match[password1]', prompt: 'Passwords must match'
+                            }
+                        ]
+                    }
+                }
+            })
+        });
+        //match[identifyer]
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui teal icon header">
+                <i class="large red heart icon"></i>
+
+                <div class="content">Signup for an Account</div>
+            </h2>
+            <!--name, nickname, email, sex,  password, password -->
+            <form action="/accounts/register/" method="post" class="ui large form" id="register-form">
+                {% csrf_token %}
+                <div class="ui stacked segment">
+
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input name="name" placeholder="Your name" type="text" id="name"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input name="nick" placeholder="Your username" type="text" id="nick"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+                            <input name="email" placeholder="Your email" type="email" id="email"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input name="password1" placeholder="Your Password" type="password" id="password1"/>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+                            <input name="password2" placeholder="Your Password" type="password" id="password2"/>
+                        </div>
+                    </div>
+
+
+
+                    <div class="field">
+                        <div class="ui left icon inut">
+                            <i class="text icon"></i>
+                            <textarea name="description"
+                                      rows="4"
+                                      placeholder="Tell others about yourself"
+                                      ></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <p>Have fun</p>
+                    </div>
+
+
+                    <div class="ui fluid large teal submit button" id="register">Register</div>
+                </div>
+
+                <div class="ui error message">
+                    {{ form.errors }}
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        $('.ui.radio.checkbox').checkbox();
+
+
+    </script>
+{% endblock %}
+
+{% block extra_scripts %}{% endblock %}

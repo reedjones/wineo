@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <title>{% block title %}{% endblock %} | Wine|</title>
+    <link rel="stylesheet" type="text/css" href="/static/semantic/dist/semantic.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/semantic/dist/semantic.js"></script>
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+{% include 'nav.html' %}
+
+{% block above_main %}{% endblock %}
+
+<div class="ui main container">
+
+    {% block content %}
+    {% endblock %}
+</div>
+
+{% include 'footer.html' %}
+<script>
+    $('.message .close').on('click', function () {
+        $(this)
+                .closest('.message')
+                .transition('fade')
+        ;
+    });
+
+    $('.menu .browse').popup({
+        inline: true,
+        hoverable: true,
+        position: 'bottom left',
+        delay: {
+            show: 300,
+            hide: 700
+        }
+    });
+
+    $('.menu .help-out').popup({
+        inline: true,
+        hoverable: true,
+        position: 'bottom right',
+        delay: {
+            show: 300,
+            hide: 700
+        }
+    });
+
+</script>
+{% block extra_scripts %}{% endblock %}
+</body>
+</html>

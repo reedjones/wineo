@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Wine: {{ wine.name }}{% endblock %}
+
+{% block head %}
+    <style>
+
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ui grid">
+        <div class="row">
+            <div class="ui center aligned icon header">
+                <i class="pink heart icon"></i>
+
+                <h1 class="content">Wine Entry: {{ wine.name }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ui card">
+                <div class="content">
+                    <div class="right floated meta">{{ wine.created_on }}</div>
+                    <img class="ui avatar image" src="/static/img/avatar/large/elliot.jpg"> Elliot
+                </div>
+                <div class="image">
+                    <img src="{{ wine.label.url }}">
+                </div>
+                <div class="meta">
+                    <div class="ui list">
+                        <div class="item">Type: {{ wine.wine_type }}</div>
+                        <div class="item">Maker: {{ wine.user_made_by }}</div>
+                        <div class="item">Price: {{ wine.estimated_price }}</div>
+                    </div>
+                </div>
+                <div class="content">
+                    <span class="right floated">
+                      <i class="heart outline like icon"></i>
+                      1 likes
+                    </span>
+                    <i class="comment icon"></i>
+                    3 comments
+                </div>
+                <div class="extra content">
+                    <div class="ui large transparent left icon input">
+                        <i class="heart outline icon"></i>
+                        <input type="text" placeholder="Add Comment...">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}{% endblock %}

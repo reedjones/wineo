@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Profile{% endblock %}
+
+{% block head %}
+    <style>
+        #profile-pic {
+            height: 200px;
+            width: 200px;
+            margin-left: 20px;
+        }
+
+        .spaced {
+            margin-top: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ui center aligned icon header">
+        <i class="pink heart icon"></i>
+
+        <h1 class="content">Hi, {{ profile.nick }} Welcome To Your Profile</h1>
+    </div>
+    <div class="ui three column relaxed grid">
+        <div class="row">
+            <div class="column">
+                <a class="ui teal pink button" href="/wine/add/">Add A Wine</a>
+            </div>
+            <div class="column">
+                <img class="ui medium circular image" src="{{ profile.photo.url }}"
+                     id="profile-pic">
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+        <div class="spaced row">
+            <div class="column">
+                <div class="ui list">
+                    <div class="item">
+                        <div class="header">Nick</div>
+                        {{ profile.nick }}
+                    </div>
+                    <div class="item">
+                        <div class="header">Description</div>
+                        {{ profile.description }}
+                    </div>
+                    <div class="item">
+                        <div class="header">Joined on</div>
+                        {{ profile.joined_on }}
+                    </div>
+
+                </div>
+            </div>
+            <div class="column">
+
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+        <div class="spaced row">
+            <div class="column">
+
+            </div>
+            <div class="column">
+
+            </div>
+            <div class="column">
+
+            </div>
+        </div>
+        <!--end grid-->
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}{% endblock %}
